@@ -2,8 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Airline } from './models/airline';
+import { Passenger } from './models/passenger';
 import { AirActions } from './states/air.actions';
 import { AirState, AirStateModel } from './states/air.state';
+import { PassengerActions } from './states/passenger.actions';
+import { PassangerState, PassengerStateModel } from './states/passenger.state';
 
 @Component({
   selector: 'app-root',
@@ -13,20 +16,19 @@ import { AirState, AirStateModel } from './states/air.state';
 export class AppComponent implements OnInit{
   
   title = 'Lesson10';
-  // airlines: Airline[] = [];
-  // passengers: Passenger[] = [];
   airlineId:number = 0;
-  // passengersId:string = '';
+  passengersId:string = '';
 
-  constructor(private store: Store){}
+  constructor(private store: Store) {}
 
   ngOnInit(): void {
   
   }
-  @Select(AirState) airlineState$?: Observable<AirStateModel>
+  @Select(AirState) airlineState$?: Observable<AirStateModel>;
+  @Select(PassangerState) passangerState$?: Observable<PassengerStateModel> ;
   
   fetchAir(){
-    this.store.dispatch(new AirActions.fetchAir)
+    this.store.dispatch(new AirActions.fetchAir);
   }
   fetchAirById(id:number){
     this.store.dispatch( new AirActions.fetchAirById(id));
@@ -44,7 +46,22 @@ export class AppComponent implements OnInit{
     this.store.dispatch( new AirActions.addAir(newAirline));  
   }
   
+  addPassengerById(id:string){
+    this.store.dispatch(new PassengerActions.fetchPassengerById(id));
+  }
+
+  uppdatePassenger(pass: Passenger){
+    this.store.dispatch(new PassengerActions.updatePassenger(pass));
+    console.log(pass);
+  }
+  deletePassenger(pass: Passenger){
+    this.store.dispatch(new PassengerActions.deletePassenger(pass));
+    console.log(pass);
+  }
+  uppdatePassengerPut(pass: Passenger){
+    this.store.dispatch(new PassengerActions.updatePassengerPut(pass));
+    console.log(pass);
+  }
 }
 
 
-//private airlineService: AirlinesService, private passengerService: PassengersService, public indicator:IndikatorService

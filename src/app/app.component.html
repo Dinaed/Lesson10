@@ -5,8 +5,8 @@
 <button (click)="fetchAir()">Fetch Airlines</button>
 <p class="message">id of passengers for testing: 602e4361822376ee664e937c, 602e4b4f8223764e694e9389, 602e54f8822376b4fe4e938c, 60334af2331d52e7e17257b6, 603365af4b0d3358eb4a5b98, 60360176cb8aca68b76445c9</p>
 <hr>
-<!-- <input type="string" [(ngModel)]="passengersId"> -->
-<!-- <button (click)="addPassengerById(passengersId)">Add Passenger</button> -->
+<input type="string" [(ngModel)]="passengersId"> 
+<button (click)="addPassengerById(passengersId)">Add Passenger</button> 
 <div class="container">
 
   <div *ngFor="let air of (airlineState$ | async)?.airlines" class="card" >
@@ -17,7 +17,7 @@
     <p>{{air.country}}</p>
   </div>
 
-  <!-- <div class="pass-card" *ngFor="let pass of passengers">
+  <div class="pass-card" *ngFor="let pass of (passangerState$ | async)?.passenger">
     <p><i>Passenger id: {{pass._id}}</i></p>
     <h3>Passenger name: {{pass.name}}</h3>
     <p>Passenger trips: {{pass.trips}}</p>
@@ -34,8 +34,6 @@
     <button (click)="uppdatePassengerPut(pass)">Uppdate Put Passenger</button>
   </div>
 
-</div> -->
-<!-- <div class="loader" *ngIf="indicator.loading">
-  <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-</div> -->
+</div>
+
 
