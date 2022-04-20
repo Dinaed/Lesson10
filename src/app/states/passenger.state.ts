@@ -46,6 +46,7 @@ constructor(private passenger : PassengersService){}
   updatePassenger(ctx: StateContext<PassengerStateModel>, payload: PassengerActions.updatePassenger){
     return this.passenger.uppdatePassenger(payload.passnger).pipe(tap(passenger => {
       ctx.setState(patch({ passenger: updateItem(item => item!._id === payload.passnger._id, passenger) }));
+      console.log(passenger);
     }))
   }
 
@@ -53,6 +54,7 @@ constructor(private passenger : PassengersService){}
   updatePassengerPut(ctx: StateContext<PassengerStateModel>, payload: PassengerActions.updatePassengerPut){
     return this.passenger.uppdatePassengerPut(payload.passnger).pipe(tap(passenger => {
       ctx.setState(patch({ passenger: updateItem(item => item!._id === payload.passnger._id, passenger) }));
+      console.log(passenger);
     }))
   }
 
@@ -61,6 +63,7 @@ constructor(private passenger : PassengersService){}
     return this.passenger.deletePassenger(payload.passnger).pipe(tap(passenger => {
       const state = ctx.getState();
       ctx.setState({ ...state, passenger: state.passenger.filter(item => item != payload.passnger) });
+      console.log(passenger);
     }))
   }
 }

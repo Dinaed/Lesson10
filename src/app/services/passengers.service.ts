@@ -21,8 +21,8 @@ constructor(private httpClient: HttpClient) { }
     return this.httpClient.patch<Passenger>(`https://api.instantwebtools.net/v1/passenger/${uppdatePassenger._id}`, uppdatePassenger);
   }
 
-  uppdatePassengerPut(uppdatePassenger:Passenger): Observable<Passenger> {
-    return this.httpClient.put<Passenger>(`https://api.instantwebtools.net/v1/passenger/${uppdatePassenger._id}`, uppdatePassenger);
+  uppdatePassengerPut(uppdatePassengerPut:Passenger): Observable<Passenger> {
+    return this.httpClient.put<Passenger>(`https://api.instantwebtools.net/v1/passenger/${uppdatePassengerPut._id}`, uppdatePassengerPut);
   }
 
   deletePassenger(passenger:Passenger): Observable<Passenger> {

@@ -60,7 +60,6 @@ export class AppComponent implements OnInit{
   }
   uppdatePassengerPut(pass: Passenger){
     this.store.dispatch(new PassengerActions.updatePassengerPut(pass));
-    console.log(pass);
   }
 }
 
